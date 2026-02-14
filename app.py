@@ -1,13 +1,23 @@
 import streamlit as st
 import time
 import random
+import base64
 
 # 1. Page Configuration
 st.set_page_config(page_title="For Mary", page_icon="💌")
 
-# ---------------------------------------------------------
-# CUSTOM CSS (Styles + Animations)
-# ---------------------------------------------------------
+def render_gif(path):
+    file_ = open(path, "rb")
+    contents = file_.read()
+    data_url = base64.b64encode(contents).decode("utf-8")
+    file_.close()
+
+    st.markdown(
+        f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
+        unsafe_allow_html=True,
+    )
+
+# css
 st.markdown("""
     <style>
     .stApp { text-align: center; }
@@ -137,4 +147,5 @@ elif st.session_state.stage == 'question':
 elif st.session_state.stage == 'success':
     st.balloons()
     st.markdown('<div class="fade-in-text"><h1>Yipeeeee! Tenchu bib happing ato! 🥰</h1></div>', unsafe_allow_html=True)
-    st.image("assets/yipee_bbcat.gif")
+    # st.image("assets/yipee_bbcat.gif")
+    render_gif(("assets/yipee_bbcat.gif"))
