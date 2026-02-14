@@ -93,10 +93,13 @@ def typewriter(text, speed=0.08):
 
 # stage 1: intro
 if st.session_state.stage == 'intro':
-    typewriter("Hi bb chutie dil yes wae barbie! 👋", speed=0.1)
-    typewriter("This is bb adrian! 👨‍💻", speed=0.1)
-    typewriter("I have a very important question...", speed=0.08)
+    typewriter("Hi bb chutie dil yes wae barbie! \n👉👈", speed=0.1)
+    # typewriter("This is bb adrian! 🐷", speed=0.1)
+    # typewriter("Happy happy valentines bib...", speed=0.1)
+    # typewriter("Thank you sa 3 bb valentines together", speed=0.1)
     typewriter("Ready? 👀", speed=0.1)
+
+    time.sleep(1)
 
     st.session_state.stage = 'question'
     st.rerun()
@@ -104,13 +107,22 @@ if st.session_state.stage == 'intro':
 # stage 2: question
 elif st.session_state.stage == 'question':
     
-    time.sleep(1)
     if not st.session_state.buttons_revealed:
         st.markdown('<div class="fade-in-text"><h1>Will you be my bb valentine? 🌹</h1></div>', unsafe_allow_html=True)
-        time.sleep(2.5)
+        time.sleep(2.5) 
         st.session_state.buttons_revealed = True
     else:
         st.markdown('<h1>Will you be my bb valentine? 🌹</h1>', unsafe_allow_html=True)
+        
+        # disable animation
+        st.markdown("""
+            <style>
+            .stButton button {
+                animation: none !important;
+                transition: none !important;
+            }
+            </style>
+        """, unsafe_allow_html=True)
 
     st.write("##")
 
@@ -135,6 +147,7 @@ elif st.session_state.stage == 'question':
                             possible_slots = [0, 1, 2, 3, 4, 5, 6]
                         else:
                             possible_slots = [8, 9, 10, 11, 12, 13, 14]
+                            
                         st.session_state.no_pos = random.choice(possible_slots)
                         st.rerun()
                 
@@ -147,5 +160,5 @@ elif st.session_state.stage == 'question':
 elif st.session_state.stage == 'success':
     st.balloons()
     st.markdown('<div class="fade-in-text"><h1>Yipeeeee! Tenchu bib happing ato! 🥰</h1></div>', unsafe_allow_html=True)
-    # st.image("assets/yipee_bbcat.gif")
-    render_gif(("assets/yipee_bbcat.gif"))
+    st.image("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXk3N2xsazhjamJtNXc1ZTZkMzdiaHRldmNhcXE1MXNya3A1dGZvcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TjSPQgowhhJdHgvnwA/giphy.gif")
+    # st.image("https://tenor.com/view/cat-gif-16606050094708454978.gif")
