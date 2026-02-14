@@ -97,6 +97,13 @@ if st.session_state.stage == 'intro':
     # typewriter("This is bb adrian! 🐷", speed=0.1)
     # typewriter("Happy happy valentines bib...", speed=0.1)
     # typewriter("Thank you sa 3 bb valentines together", speed=0.1)
+    # typewriter("A lot of things happened in the past years", speed=0.1)
+    # typewriter("We went to lots of places, had many fights, and also had many bb celebrations", speed=0.1)
+    # typewriter("Gust ko ", speed=0.1)
+    # typewriter("I also just want to say sorry for I did and did not do", speed=0.1)
+    # typewriter("So thank you for staying with me after all this time", speed=0.1)
+    # typewriter("", speed=0.1)
+
     typewriter("Ready? 👀", speed=0.1)
 
     time.sleep(1)
@@ -111,10 +118,12 @@ elif st.session_state.stage == 'question':
         st.markdown('<div class="fade-in-text"><h1>Will you be my bb valentine? 🌹</h1></div>', unsafe_allow_html=True)
         time.sleep(2.5) 
         st.session_state.buttons_revealed = True
+        
+        if 'no_pos' not in st.session_state:
+            st.session_state.no_pos = 1
     else:
         st.markdown('<h1>Will you be my bb valentine? 🌹</h1>', unsafe_allow_html=True)
         
-        # disable animation
         st.markdown("""
             <style>
             .stButton button {
@@ -126,35 +135,28 @@ elif st.session_state.stage == 'question':
 
     st.write("##")
 
-    slot_counter = 0
-    for row in range(5):
-        c1, c2, c3 = st.columns([1, 1, 1])
-        cols = [c1, c2, c3]
+    if 'no_pos' not in st.session_state or st.session_state.no_pos < 1 or st.session_state.no_pos > 6:
+        st.session_state.no_pos = 1
 
-        for col_idx in range(3):
-            current_col = cols[col_idx]
-            with current_col:
-                # Yes
-                if slot_counter == 7:
-                    if st.button("Yes na yes bib 😘", type="primary", use_container_width=True, key="yes_btn"):
-                        st.session_state.stage = 'success'
-                        st.rerun()
+    for row in range(7):
+        
+        # yes, row 1
+        if row == 0:
+            if st.button("Yes na yes bib 😘", type="primary", use_container_width=True, key="yes_btn"):
+                st.session_state.stage = 'success'
+                st.rerun()
 
-                # No
-                elif slot_counter == st.session_state.no_pos:
-                    if st.button("No 🥺😞😭", type="secondary", use_container_width=True, key="no_btn"):
-                        if st.session_state.no_pos > 7:
-                            possible_slots = [0, 1, 2, 3, 4, 5, 6]
-                        else:
-                            possible_slots = [8, 9, 10, 11, 12, 13, 14]
-                            
-                        st.session_state.no_pos = random.choice(possible_slots)
-                        st.rerun()
-                
-                else:
-                    st.write("") 
-            
-            slot_counter += 1
+        # no, in other rows
+        elif row == st.session_state.no_pos:
+            if st.button("No 🥺😞😭", type="secondary", use_container_width=True, key="no_btn"):
+                possible_rows = [i for i in range(1, 7) if i != st.session_state.no_pos]
+                st.session_state.no_pos = random.choice(possible_rows)
+                st.rerun()
+
+        # rmpty rows
+        else:
+            st.write("") 
+            st.write("")
 
 # stage 3: yipee
 elif st.session_state.stage == 'success':
