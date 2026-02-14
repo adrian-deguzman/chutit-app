@@ -99,7 +99,7 @@ if st.session_state.stage == 'intro':
     typewriter("Thank you sa 3 bb valentines together yeyyy", speed=0.1)
     typewriter("A lot of things happened in the past years", speed=0.1)
     typewriter("We went to lots of places, had many away, and also had many bb celebrations", speed=0.1)
-    typewriter("But still no bb anniversary celebration huhu", speed=0.1)
+    typewriter("Thank you so much for sharing your story and music with me.", speed=0.1)
     typewriter("I also just want to say sorry for things I did and did not do...", speed=0.1)
     typewriter("For the numerous times when I did not live to your expectations", speed=0.1)
     typewriter("I'm really sorry bib", speed=0.1)
@@ -176,9 +176,9 @@ elif st.session_state.stage == 'success':
     <div class="fade-in-text" style="text-align: center;">
         <h2 style="margin-bottom: 0;">Yipeeeee!</h2>
         <p style="font-size: 0.8em; margin: 5px 0;">Tenchu bib supah happing ako parang yung pusa sa baba.</p>
-        <p style="font-size: 0.8em; margin: 5px 0;">Next Tuesday or Saturday bib date tayo, sagot ko hehe. May alam ako place mweheheheh.</p>
+        <p style="font-size: 0.8em; margin: 5px 0;">Next Tuesday or Saturday bib date tayo kahit tapos na valentines, sagot ko hehe. May alam ako place mweheheheh.</p>
         <h3 style="margin-top: 0;">Loving kita bib always yan! 🥰</h3>
     </div>
     """, unsafe_allow_html=True)
-    st.image("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXk3N2xsazhjamJtNXc1ZTZkMzdiaHRldmNhcXE1MXNya3A1dGZvcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TjSPQgowhhJdHgvnwA/giphy.gif")
-    # st.image("https://tenor.com/view/cat-gif-16606050094708454978.gif")
+    # st.image("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXk3N2xsazhjamJtNXc1ZTZkMzdiaHRldmNhcXE1MXNya3A1dGZvcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TjSPQgowhhJdHgvnwA/giphy.gif")
+    st.image("https://tenor.com/view/cat-gif-16606050094708454978.gif")
